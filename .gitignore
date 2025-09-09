@@ -6,3 +6,5 @@
 *.devcontainer.json
 
 bfg.jar
+# ignore terraform lock files in subdirectories
+day1/.terraform.lock.hcl
