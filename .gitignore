@@ -8,3 +8,7 @@
 bfg.jar
 # ignore terraform lock files in subdirectories
 day1/.terraform.lock.hcl
+
+# Only track multiple-regions.tf in Day2; ignore the rest
+Day2/*
+!Day2/multiple-regions.tf
