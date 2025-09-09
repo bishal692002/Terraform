@@ -4,5 +4,5 @@
 .terraform.lock.hcl
 .devcontainer
 *.devcontainer.json
-.bfg.jar
+
 bfg.jar
