@@ -2,6 +2,6 @@
 *.tfstate
 *.tfstate.backup
 .terraform.lock.hcl
-.devcontainer/
+.devcontainer
 *.devcontainer.json
 .bfg.jar
