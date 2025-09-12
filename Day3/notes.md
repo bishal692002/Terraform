@@ -1,21 +1,16 @@
-Got it 👍 I’ve properly formatted everything into a **Markdown (`.md`) file** so you can directly paste into `notes.md`.
 
-Here’s the cleaned-up version:
 
-````markdown
-# Terraform Notes
+### 3. Input & Output Variables
 
----
+Input Variables:
 
-## 3. Input & Output Variables
+* Used to parameterize Terraform configurations.
+* Declared with "variable" block.
+* Attributes: description, type, default.
 
-### Input Variables
-- Parameterize Terraform configurations.  
-- Declared with `variable` block.  
-- Attributes: `description`, `type`, `default`.  
+Example:
 
-**Example:**
-```hcl
+```
 variable "example_var" {
   description = "An example input variable"
   type        = string
@@ -25,27 +20,25 @@ variable "example_var" {
 resource "example_resource" "example" {
   name = var.example_var
 }
-````
+```
 
----
+Output Variables:
 
-### Output Variables
+* Used to expose values from a configuration or module.
+* Useful for sharing values between modules or after apply.
 
-* Expose values from a configuration or module.
-* Useful for sharing values between modules or after `apply`.
+Example:
 
-**Example:**
-
-```hcl
+```
 output "example_output" {
   description = "An example output variable"
   value       = resource.example_resource.example.id
 }
 ```
 
-**Reference module outputs:**
+Reference module outputs:
 
-```hcl
+```
 output "root_output" {
   value = module.example_module.example_output
 }
@@ -53,9 +46,9 @@ output "root_output" {
 
 ---
 
-## 4. Variables Demo
+### 4. Variables Demo
 
-```hcl
+```
 # Input variable for instance type
 variable "instance_type" {
   description = "EC2 instance type"
@@ -89,57 +82,52 @@ output "public_ip" {
 
 ---
 
-## 5. Terraform `.tfvars` Files
+### 5. Terraform .tfvars Files
 
-### Purpose
-
+Purpose:
 Store values for input variables separately.
 
-**Useful for:**
+Useful for:
 
 * Environment configs (dev, staging, prod).
 * Sensitive values (keys, secrets).
 * Collaboration (team-specific configs).
 
----
+Example:
 
-### Example
+variables.tf
 
-**variables.tf**
-
-```hcl
+```
 variable "instance_type" { type = string }
 variable "ami_id" { type = string }
 ```
 
-**dev.tfvars**
+dev.tfvars
 
-```hcl
+```
 instance_type = "t3.micro"
 ami_id        = "ami-0abcd1234efgh5678"
 ```
 
 Run with:
 
-```bash
+```
 terraform apply -var-file=dev.tfvars
 ```
 
 ---
 
-## 6. Conditional Expressions
+### 6. Conditional Expressions
 
-### Syntax
+Syntax:
 
-```hcl
+```
 condition ? true_val : false_val
 ```
 
----
+a) Conditional Resource Creation
 
-### a) Conditional Resource Creation
-
-```hcl
+```
 resource "aws_instance" "example" {
   count         = var.create_instance ? 1 : 0
   ami           = "ami-xxxx"
@@ -147,11 +135,9 @@ resource "aws_instance" "example" {
 }
 ```
 
----
+b) Conditional Variable Assignment
 
-### b) Conditional Variable Assignment
-
-```hcl
+```
 variable "environment" {
   default = "development"
 }
@@ -178,11 +164,9 @@ resource "aws_security_group" "example" {
 }
 ```
 
----
+c) Conditional Resource Configuration
 
-### c) Conditional Resource Configuration
-
-```hcl
+```
 resource "aws_security_group" "example" {
   name = "example-sg"
 
@@ -194,4 +178,5 @@ resource "aws_security_group" "example" {
   }
 }
 ```
+
 
