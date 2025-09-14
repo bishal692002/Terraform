@@ -1,5 +1,3 @@
-
-
 ### 3. Input & Output Variables
 
 Input Variables:

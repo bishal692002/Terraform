@@ -12,3 +12,9 @@ day1/.terraform.lock.hcl
 # Only track multiple-regions.tf in Day2; ignore the rest
 Day2/*
 !Day2/multiple-regions.tf
+
+# Ignore unnecessary files in Day3
+Day3/.terraform/
+Day3/terraform.tfstate
+Day3/terraform.tfstate.backup
+Day3/.terraform.lock.hcl
